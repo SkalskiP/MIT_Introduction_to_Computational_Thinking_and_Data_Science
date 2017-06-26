@@ -88,3 +88,17 @@ calories = [123, 154, 258, 354, 365, 150, 95, 195]
 foods = buildMenu(names, values, calories)
 
 testMaxVal(foods, 750)
+
+#CODE TO TRY LARGER EXAMPLES
+
+import random
+
+def buildLargeMenu(numItems, maxVal, maxCost):
+    items = []
+    for i in range(numItems):
+        items.append(Food(str(i), random.randint(1, maxVal), random.randint(1, maxCost)))
+    return items
+
+for numItems in (5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60):
+    items = buildLargeMenu(numItems, 90, 250)
+    testMaxVal(items, 750, False)
