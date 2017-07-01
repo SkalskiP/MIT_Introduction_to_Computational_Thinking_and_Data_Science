@@ -216,16 +216,16 @@ def simAll(drunkKinds, walkLengths, numTrials):
     pylab.legend(loc='best')
 
 
-random.seed(0)
-numSteps = (10,100,1000,10000,100000)
-simAll((UsualDrunk, MasochistDrunk), numSteps, 100)
-
-pylab.plot(numSteps, pylab.array(numSteps)**0.5, 'k-.',
-          label = 'Square root of steps')
-pylab.plot(numSteps, pylab.array(numSteps)*0.05, 'g-.',
-          label = 'numSteps*0.05')
-pylab.legend(loc = 'best')
-pylab.savefig('distance_trends.png')
+# random.seed(0)
+# numSteps = (10,100,1000,10000,100000)
+# simAll((UsualDrunk, MasochistDrunk), numSteps, 100)
+#
+# pylab.plot(numSteps, pylab.array(numSteps)**0.5, 'k-.',
+#           label = 'Square root of steps')
+# pylab.plot(numSteps, pylab.array(numSteps)*0.05, 'g-.',
+#           label = 'numSteps*0.05')
+# pylab.legend(loc = 'best')
+# pylab.savefig('distance_trends.png')
 
 
 def getFinalLocs(numSteps, numTrials, dClass):
@@ -264,10 +264,7 @@ def plotLocs(drunkKinds, numSteps, numTrials):
     pylab.xlabel('Steps East/West of Origin')
     pylab.ylabel('Steps North/South of Origin')
     pylab.legend(loc='lower center')
-
-
-# random.seed(0)
-# plotLocs((UsualDrunk, MasochistDrunk), 10000, 1000)
+    pylab.savefig('final_locations.pdf')
 
 class OddField(Field):
     def __init__(self, numHoles=1000,
@@ -288,6 +285,9 @@ class OddField(Field):
         y = self.drunks[drunk].getY()
         if (x, y) in self.wormholes:
             self.drunks[drunk] = self.wormholes[(x, y)]
+
+random.seed(0)
+plotLocs((UsualDrunk, MasochistDrunk), 10000, 1000)
 
 
 # TraceWalk using oddField
